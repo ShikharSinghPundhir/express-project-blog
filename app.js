@@ -10,6 +10,7 @@ app.set('view engine','ejs')
 // route
 app.get('/',FrontController.home)
 app.get('/about',FrontController.about)
+app.get('/team',FrontController.team)
 
 
 
