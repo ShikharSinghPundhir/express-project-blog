@@ -1,17 +1,15 @@
 const express = require('express')
+const FrontController = require('./controllers/v/FrontController')
 const app = express()
 const port = 2147
 
+
+//setup EJS
+app.set('view engine','ejs')
+
 // route
-app.get('/', (req, res) => {
-  res.send('Home Page')
-})
-app.get('/about', (req, res) => {
-  res.send('About Page')
-})
-app.get('/contact', (req, res) => {
-  res.send('contact page')
-})
+app.get('/',FrontController.home)
+app.get('/about',FrontController.about)
 
 
 
