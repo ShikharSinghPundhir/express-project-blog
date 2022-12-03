@@ -1,11 +1,14 @@
 const express = require('express')
-const FrontController = require('./controllers/v/FrontController')
+const FrontController = require('./controllers/FrontController')
 const app = express()
 const port = 2147
 
 
 //setup EJS
 app.set('view engine','ejs')
+
+//static files path
+app.use(express.static('public'))
 
 // route
 app.get('/',FrontController.home)
