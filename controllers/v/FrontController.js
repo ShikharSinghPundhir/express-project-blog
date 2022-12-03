@@ -10,12 +10,12 @@ class FrontController{
     }
 
     static about=(req,res)=>{
-        // res.send('Aboutpage')
+        
         res.render('about')
     }
 
     static  team=(req,res)=>{
-        // res.send('Aboutpage')
+        
         res.render('team')
     }
 
