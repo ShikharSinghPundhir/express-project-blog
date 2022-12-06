@@ -14,10 +14,11 @@ class FrontController{
         res.render('about')
     }
 
-    static  team=(req,res)=>{
+    static  contact=(req,res)=>{
         
-        res.render('team')
+        res.render('contact')
     }
+
 
     
 }

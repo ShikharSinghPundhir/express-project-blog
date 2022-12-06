@@ -13,7 +13,7 @@ app.use(express.static('public'))
 // route
 app.get('/',FrontController.home)
 app.get('/about',FrontController.about)
-app.get('/team',FrontController.team)
+app.get('/contact',FrontController.contact)
 
 
 
