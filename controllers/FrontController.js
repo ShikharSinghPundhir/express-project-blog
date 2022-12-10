@@ -19,6 +19,18 @@ class FrontController{
         res.render('contact')
     }
 
+    static blog=(req,res)=>{
+
+        res.render('blog')
+    }
+
+    static login=(req,res)=>{
+
+        res.render('login')
+    }
+
+
+
 
     
 }

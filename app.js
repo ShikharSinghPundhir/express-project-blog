@@ -14,6 +14,8 @@ app.use(express.static('public'))
 app.get('/',FrontController.home)
 app.get('/about',FrontController.about)
 app.get('/contact',FrontController.contact)
+app.get('/blog',FrontController.blog)
+app.get('/login',FrontController.login)
 
 
 
