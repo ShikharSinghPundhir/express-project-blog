@@ -1,5 +1,7 @@
 const express = require('express')
 const AdminController = require('./controllers/admin/AdminController')
+const BlogController = require('./controllers/admin/BlogController')
+const { blogdisplay } = require('./controllers/admin/BlogController')
 const FrontController = require('./controllers/FrontController')
 const app = express()
 const port = 2147
@@ -23,6 +25,8 @@ app.get('/login',FrontController.login)
 // admin controller 
 app.get('/admin/dashboard',AdminController.Dashboard)
 
+//admin blog controller
+app.get('/admin/blogdisplay',BlogController.blogdisplay)
 
 
 // server create
