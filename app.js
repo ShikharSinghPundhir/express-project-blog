@@ -2,6 +2,7 @@ const express = require('express')
 const AdminController = require('./controllers/admin/AdminController')
 const BlogController = require('./controllers/admin/BlogController')
 const { blogdisplay } = require('./controllers/admin/BlogController')
+const CategoryController = require('./controllers/admin/CategoryController')
 const FrontController = require('./controllers/FrontController')
 const app = express()
 const port = 2147
@@ -28,6 +29,8 @@ app.get('/admin/dashboard',AdminController.Dashboard)
 //admin blog controller
 app.get('/admin/blogdisplay',BlogController.blogdisplay)
 
+//admin category controller
+app.get('/admin/categorydisplay',CategoryController.categorydisplay)
 
 // server create
 app.listen(port, () => {
