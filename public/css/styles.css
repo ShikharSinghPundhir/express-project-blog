@@ -43,8 +43,8 @@ h1 {font-size: 2.4rem;margin-bottom: 30px;}
 .dash-left ul {padding:0;margin:0;list-style:none;}
 .dash-left ul li { background-color: #f1f1f1; margin-bottom:5px;}
 .dash-left ul li a {color:#333; padding:5px 15px; display: block;}
-.dash-left ul li:hover a {background-color:#007EDB; text-decoration: none; color:#fff;}
-.dash-left ul li a.active {background-color:#007EDB; color:#fff;}
+.dash-left ul li:hover a {background-color:#dbc100; text-decoration: none; color:#fff;}
+.dash-left ul li a.active {background-color:#dbc100; color:#fff;}
 .dash-header {display:flex; justify-content: space-between;}
 .table img { width:80px; }
 .action a {margin:0 5px;}
