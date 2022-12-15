@@ -4,8 +4,12 @@ const BlogController = require('./controllers/admin/BlogController')
 const { blogdisplay } = require('./controllers/admin/BlogController')
 const CategoryController = require('./controllers/admin/CategoryController')
 const FrontController = require('./controllers/FrontController')
+const connectDB = require('./db/connect_db')
 const app = express()
 const port = 2147
+
+// mongo db connection
+connectDB()
 
 
 //setup EJS
@@ -37,3 +41,4 @@ app.listen(port, () => {
     console.log(`Server is running  localhost : ${port}`)
   })
   
+
