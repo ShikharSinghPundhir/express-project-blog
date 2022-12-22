@@ -38,9 +38,11 @@ app.get('/admin/dashboard',AdminController.Dashboard)
 //admin blog controller
 app.get('/admin/blogdisplay',BlogController.blogdisplay)
 app.post('/bloginsert',BlogController.bloginsert)
+app.get('/admin/blogview/:id',BlogController.blogview)
 
 //admin category controller
 app.get('/admin/categorydisplay',CategoryController.categorydisplay)
+app.post('/categoryinsert',CategoryController.categoryinsert)
 
 // server create
 app.listen(port, () => {

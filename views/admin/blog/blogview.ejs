@@ -9,7 +9,7 @@
                         <div class="dash-right">
                             <div class="dash-header">
                                 <div class="dash-title">
-                                    <h1>Blogs</h1>
+                                    <h1>Blogs of <%= b._id %></h1>
                                 </div>
                                 <div class="dash-nav">
                                     <!-- Button trigger modal -->
@@ -27,28 +27,22 @@
                                     <!-- <th>Image</th> -->
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>Action</th>
+
                                 </tr>
-                                <% bd.forEach((b)=>{ %>
-                                    <tr>
-                                        <td>
-                                            <%= b._id %>
-                                        </td>
-                                        <td>
-                                            <%= b.title %>
-                                        </td>
-                                        <td>
-                                            <%= b.description %>
-                                        </td>
-                                        <td>
-                                            <a href="/admin/blogview/<%= b._id %>" ><i class="fa-solid fa-eye"
-                                                    style="color: deepskyblue;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
-                                            <a href=""><i class="fa-solid fa-pen-to-square"
-                                                    style="color: green;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
-                                            <a href=""><i class="fa-sharp fa-solid fa-trash" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
-                                    <% }) %>
+
+                                <tr>
+                                    <td>
+                                        <%= b._id %>
+                                    </td>
+                                    <td>
+                                        <%= b.title %>
+                                    </td>
+                                    <td>
+                                        <%= b.description %>
+                                    </td>
+
+                                </tr>
+
 
 
                             </table>
@@ -81,7 +75,7 @@
                             <div class="form-group form-row">
                                 <label class="col-md-3 required">Title *</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="title" placeholder="Title" required >
+                                    <input type="text" class="form-control" name="title" placeholder="Title" required>
                                 </div>
                             </div>
                             <!-- <div class="form-group form-row">
@@ -93,7 +87,8 @@
                             <div class="form-group form-row">
                                 <label class="col-md-3 required">Description *</label>
                                 <div class="col-md-9">
-                                    <textarea name="description" rows="5" class="form-control" placeholder="Description" required ></textarea>
+                                    <textarea name="description" rows="5" class="form-control" placeholder="Description"
+                                        required></textarea>
                                 </div>
                             </div>
 

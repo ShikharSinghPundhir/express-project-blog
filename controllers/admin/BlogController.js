@@ -1,30 +1,37 @@
-const BlogModel=require('../../models/Blog')
+const { findById } = require("../../models/Blog");
+const BlogModel = require("../../models/Blog");
 
-class BlogController{
-    static blogdisplay=async(req,res)=>{
-        const blogdata=await BlogModel.find()
+class BlogController {
+    static blogdisplay = async (req, res) => {
+        const blogdata = await BlogModel.find();
         //console.log(data)
-        res.render('admin/blog/blogdisplay',{bd:blogdata})
-    }
-    static bloginsert=async(req,res)=>{
+        res.render("admin/blog/blogdisplay", { bd: blogdata });
+    };
+    static bloginsert = async (req, res) => {
         // console.log('hello')
         // console.log(req.body)
-        try{
-            const result=new BlogModel({
-                title:req.body.title,
-                description:req.body.description
-            })
-            await result.save()
-            //route url(app.js) in redirect
-            res.redirect('/admin/blogdisplay')
-
-
-        }catch(err){
-            console.log(err)
+        try {
+                const result = new BlogModel({
+                title: req.body.title,
+                description: req.body.description,
+             });
+                await result.save();
+                //route url(app.js) in redirect
+                res.redirect("/admin/blogdisplay");
+        } catch (err) {
+            console.log(err);
         }
-       
+    };
+    static blogview =async(req,res)=>{
+        // console.log(req.params.id)          //id get by params
+        try{
+                const result = await BlogModel.findById(req.params.id)
+                //console.log(result)
+                res.render('admin/blog/blogview',{b:result})
+        }
+        catch (err){
+            console.log(err);
+        }
     }
 }
-module.exports=BlogController
-
-
+module.exports = BlogController;
