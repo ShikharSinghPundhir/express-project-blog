@@ -68,10 +68,20 @@
                             <table class="table table-bordered table-striped">
                                 <tr>
                                     <th>S.No</th>
-                                    <th></th>
+                                    
                                     <th>Category Title</th>
                                     <th>Action</th>
                                 </tr>
+                                <% cd.forEach((c)=>{ %>
+                                        <tr>
+                                            <td><%= c._id %> </td>
+                                            <td><%= c.categoryname %></td>
+                                            <td><a ><i class="fa-solid fa-eye" style="color: deepskyblue;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
+                                                <a  ><i class="fa-solid fa-pen-to-square" style="color: green;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
+                                                <a ><i class="fa-sharp fa-solid fa-trash" style="color: red;"></i></a>
+                                            </td>
+                                        </tr>
+                                <% }) %>
 
 
                             </table>

@@ -7,6 +7,7 @@ const FrontController = require('./controllers/FrontController')
 const connectDB = require('./db/connect_db')
 const app = express()
 const port = 2147
+const bodyParser=require('body-parser')    
 
 // mongo db connection
 connectDB()
@@ -17,6 +18,10 @@ app.set('view engine','ejs')
 
 //static files path
 app.use(express.static('public'))
+
+// body parser
+// app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false}))
 
 // route
 //front controller
@@ -32,6 +37,7 @@ app.get('/admin/dashboard',AdminController.Dashboard)
 
 //admin blog controller
 app.get('/admin/blogdisplay',BlogController.blogdisplay)
+app.post('/bloginsert',BlogController.bloginsert)
 
 //admin category controller
 app.get('/admin/categorydisplay',CategoryController.categorydisplay)
