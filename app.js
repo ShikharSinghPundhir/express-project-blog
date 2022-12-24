@@ -40,6 +40,7 @@ app.get('/admin/blogdisplay',BlogController.blogdisplay)
 app.post('/bloginsert',BlogController.bloginsert)
 app.get('/admin/blogview/:id',BlogController.blogview)
 app.get('/admin/blogedit/:id',BlogController.blogedit)
+app.post('/blogupdate/:id',BlogController.blogupdate)
 
 //admin category controller
 app.get('/admin/categorydisplay',CategoryController.categorydisplay)
