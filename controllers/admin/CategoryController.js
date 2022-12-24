@@ -19,6 +19,17 @@ class CategoryController{
             console.log(err);
 
         }
-    };
+    }
+    static categoryview =async(req,res)=>{
+        // console.log(req.params.id)          //id get by params
+        try{
+                const result = await CategoryModel.findById(req.params.id)
+                //console.log(result)
+                res.render('admin/category/categoryview',{categoryview:result})
+        }
+        catch (err){
+            console.log(err);
+        }
+    }
 }
 module.exports=CategoryController

@@ -27,7 +27,7 @@ class BlogController {
         try{
                 const result = await BlogModel.findById(req.params.id)
                 //console.log(result)
-                res.render('admin/blog/blogview',{b:result})
+                res.render('admin/blog/blogview',{blogview:result})
         }
         catch (err){
             console.log(err);
