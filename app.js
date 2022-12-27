@@ -8,6 +8,7 @@ const connectDB = require('./db/connect_db')
 const app = express()
 const port = 2147
 const bodyParser=require('body-parser')    
+const CategoryModel = require('./models/category')
 
 // mongo db connection
 connectDB()
@@ -41,11 +42,15 @@ app.post('/bloginsert',BlogController.bloginsert)
 app.get('/admin/blogview/:id',BlogController.blogview)
 app.get('/admin/blogedit/:id',BlogController.blogedit)
 app.post('/blogupdate/:id',BlogController.blogupdate)
+app.get('/admin/blogdelete/:id',BlogController.blogdelete)
 
 //admin category controller
 app.get('/admin/categorydisplay',CategoryController.categorydisplay)
 app.post('/categoryinsert',CategoryController.categoryinsert)
 app.get('/admin/categoryview/:id',CategoryController.categoryview)
+app.get('/admin/categoryedit/:id',CategoryController.categoryedit)
+app.post('/categoryupdate/:id',CategoryController.categoryupdate)
+app.get('/admin/categorydelete/:id',CategoryController.categorydelete)
 
 // server create
 app.listen(port, () => {

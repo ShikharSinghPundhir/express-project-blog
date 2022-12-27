@@ -76,8 +76,8 @@
                                             <td><%= c._id %> </td>
                                             <td><%= c.categoryname %></td>
                                             <td><a href="/admin/categoryview/<%= c._id %>" ><i class="fa-solid fa-eye" style="color: deepskyblue;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
-                                                <a  ><i class="fa-solid fa-pen-to-square" style="color: green;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
-                                                <a ><i class="fa-sharp fa-solid fa-trash" style="color: red;"></i></a>
+                                                <a href="/admin/categoryedit/<%=c._id %>" ><i class="fa-solid fa-pen-to-square" style="color: green;"></i></a>&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;&#160;&nbsp;
+                                                <a href="/admin/categorydelete/<%=c._id %>"><i class="fa-sharp fa-solid fa-trash" style="color: red;"></i></a>
                                             </td>
                                         </tr>
                                 <% }) %>

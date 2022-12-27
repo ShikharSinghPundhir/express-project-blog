@@ -31,5 +31,37 @@ class CategoryController{
             console.log(err);
         }
     }
+    static categoryedit =async(req,res)=>{
+        //console.log(req.params.id)
+        try {
+            const result = await CategoryModel.findById(req.params.id);
+            //console.log(result)
+            res.render("admin/category/categoryedit", { categoryedit: result });
+          } catch (err) {
+            console.log(err);
+          }
+    
+    }
+    static categoryupdate = async(req,res)=>{
+        try{
+                const result = await CategoryModel.findByIdAndUpdate(req.params.id, {
+                categoryname: req.body.categoryname,
+            })
+            await result.save();
+            res.redirect("/admin/categorydisplay");
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    static categorydelete = async (req,res)=>{
+        try{
+              const result = await CategoryModel.findByIdAndDelete(req.params.id)
+              res.redirect("/admin/categorydisplay");
+        }
+        catch(err){
+          console.log(err)
+        }
+      }
 }
 module.exports=CategoryController
