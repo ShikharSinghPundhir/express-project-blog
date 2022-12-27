@@ -1,10 +1,10 @@
 const { findById } = require("../../models/Blog");
 const BlogModel = require("../../models/Blog");
-const cloudinary = require('cloudinary').v2;
-cloudinary.config({ 
-  cloud_name: 'dyxgn3lxm', 
-  api_key: '534928392931183', 
-  api_secret: 'kMQ2veL-RNoYwJwZ_zhRFNJkXuk',
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: "dyxgn3lxm",
+  api_key: "534928392931183",
+  api_secret: "kMQ2veL-RNoYwJwZ_zhRFNJkXuk",
   // secure: true
 });
 
@@ -17,18 +17,27 @@ class BlogController {
   static bloginsert = async (req, res) => {
     // console.log('hello')
     // console.log(req.body)
-    console.log(req.files.image)
-    // try {
-    //   const result = new BlogModel({
-    //     title: req.body.title,
-    //     description: req.body.description,
-    //   });
-    //   await result.save();
-    //   //route url(app.js) in redirect
-    //   res.redirect("/admin/blogdisplay");
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    // console.log(req.files.image)
+    const file = req.files.image;
+    const myimage = await cloudinary.uploader.upload(file.tempFilePath, {
+      folder: "blogs_image",
+    });
+    // console.log(myimage)
+    try {
+      const result = new BlogModel({
+        title: req.body.title,
+        description: req.body.description,
+        image: {
+          public_id: myimage.public_id,
+          url: myimage.secure_url,
+        },
+      });
+      await result.save();
+      //route url(app.js) in redirect
+      res.redirect("/admin/blogdisplay");
+    } catch (err) {
+      console.log(err);
+    }
   };
   static blogview = async (req, res) => {
     // console.log(req.params.id)          //id get by params
@@ -64,14 +73,13 @@ class BlogController {
       console.log(err);
     }
   };
-  static blogdelete = async (req,res)=>{
-    try{
-          const result = await BlogModel.findByIdAndDelete(req.params.id)
-          res.redirect("/admin/blogdisplay");
+  static blogdelete = async (req, res) => {
+    try {
+      const result = await BlogModel.findByIdAndDelete(req.params.id);
+      res.redirect("/admin/blogdisplay");
+    } catch (err) {
+      console.log(err);
     }
-    catch(err){
-      console.log(err)
-    }
-  }
+  };
 }
 module.exports = BlogController;

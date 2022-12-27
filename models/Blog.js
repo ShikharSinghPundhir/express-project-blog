@@ -9,7 +9,19 @@ const blogSchema=new mongoose.Schema({
     description:{
         type:String,
         required:true
-    }
+    },
+    image:    
+    {
+      public_id: {
+        type: String,
+        
+      },
+      url: {
+        type: String,
+         
+      },
+    },
+
 },{timestamps:true})
 
 
