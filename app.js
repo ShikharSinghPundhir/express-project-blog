@@ -10,6 +10,10 @@ const port = 2147
 const bodyParser=require('body-parser')    
 const CategoryModel = require('./models/category')
 
+// file uploader
+const fileUpload = require("express-fileupload");
+app.use(fileUpload({useTempFiles: true}));
+
 // mongo db connection
 connectDB()
 
