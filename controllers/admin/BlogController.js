@@ -10,17 +10,18 @@ class BlogController {
   static bloginsert = async (req, res) => {
     // console.log('hello')
     // console.log(req.body)
-    try {
-      const result = new BlogModel({
-        title: req.body.title,
-        description: req.body.description,
-      });
-      await result.save();
-      //route url(app.js) in redirect
-      res.redirect("/admin/blogdisplay");
-    } catch (err) {
-      console.log(err);
-    }
+    console.log(req.files.image)
+    // try {
+    //   const result = new BlogModel({
+    //     title: req.body.title,
+    //     description: req.body.description,
+    //   });
+    //   await result.save();
+    //   //route url(app.js) in redirect
+    //   res.redirect("/admin/blogdisplay");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
   static blogview = async (req, res) => {
     // console.log(req.params.id)          //id get by params
