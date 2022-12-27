@@ -1,5 +1,12 @@
 const { findById } = require("../../models/Blog");
 const BlogModel = require("../../models/Blog");
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({ 
+  cloud_name: 'dyxgn3lxm', 
+  api_key: '534928392931183', 
+  api_secret: 'kMQ2veL-RNoYwJwZ_zhRFNJkXuk',
+  // secure: true
+});
 
 class BlogController {
   static blogdisplay = async (req, res) => {
