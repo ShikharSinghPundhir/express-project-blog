@@ -1,4 +1,11 @@
 const CategoryModel=require('../../models/category')
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+    cloud_name: "dyxgn3lxm",
+    api_key: "534928392931183",
+    api_secret: "kMQ2veL-RNoYwJwZ_zhRFNJkXuk",
+    // secure: true
+  });
 
 class CategoryController{
     static categorydisplay=async(req,res)=>{
@@ -7,10 +14,20 @@ class CategoryController{
         res.render('admin/category/categorydisplay',{cd:categorydata})
     }
     
-    static categoryinsert=async (req,res)=>{
+    static categoryinsert = async (req,res)=>{
+        //console.log(req.files.image)
+        const file =req.files.image;
+        const myimages =await cloudinary.uploader.upload(file.tempFilePath,{
+            folder: "category_image"
+        });
+        //console.log(myimages)
         try{
             const result = new CategoryModel({
-                categoryname : req.body.categoryname
+                categoryname : req.body.categoryname,
+                image: {
+                    public_id: myimages.public_id,
+                    url: myimages.secure_url,
+                },
             });
             await result.save();
             res.redirect("/admin/categorydisplay")
@@ -19,7 +36,7 @@ class CategoryController{
             console.log(err);
 
         }
-    }
+    };
     static categoryview =async(req,res)=>{
         // console.log(req.params.id)          //id get by params
         try{
