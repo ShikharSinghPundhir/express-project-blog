@@ -35,6 +35,7 @@ app.get('/about',FrontController.about)
 app.get('/contact',FrontController.contact)
 app.get('/blog',FrontController.blog)
 app.get('/login',FrontController.login)
+app.get('/blogdetail/:id',FrontController.blogdetail)
 
 
 // admin controller 

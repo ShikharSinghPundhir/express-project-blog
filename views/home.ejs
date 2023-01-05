@@ -5,8 +5,10 @@
     <div class="banner-box">
         <div class="intro-text">
             <div class="intro-text-box">
-                <h1>Lorem Ipsum is simply dummy text</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <h1>Startup and Technology News</h1>
+                <p>Looking for tech blogs to keep up with the latest technology trends? No worries! Your search ends here! Read on…
+
+                    People from different walks of life are intrigued by the way technology is progressing at a profuse rate, shaping our lives into the digital world!</p>
             </div>
         </div>
         <img src="image/banner.jpg" alt="banner" />
@@ -16,66 +18,21 @@
     <div class="container">
         <div class="row">
 
-            
-            <div class="col-md-4">
+            <% d.forEach((item)=>{ %>
+            <div class="col-md-4" >
                 <div class="blog-box">
-                    <img src="/upload/image_1652702186852.jpeg" alt="blog1" />
+                    <img src="<%= item.image.url %> " width="300" height="300" alt="blog1" />
                      
-                    <h3> itm pandu</h3>
-                    <p>by <span>RSGiTECH</span> on <span>October 22, 2018</span></p>
-                    <p>pandu boi  </p>
-                    <a href="detail.html" class="btn btn-danger">Read more...</a>
+                    <h3> <%= item.title %></h3>
+                    <p><%= item.createdAt.toLocaleDateString() %></p>
+                    <p><%= item.description.slice(0,150) %></p>
+                    <a href="/blogdetail/<%= item._id %>" class="btn btn-danger">Read more...</a>
                 </div>
 
             </div>
+            <% }) %>
             
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="/upload/WhatsApp Image 2022-05-01 at 20.18.13.jpeg" alt="blog1" />
-                     
-                    <h3> ddddd</h3>
-                    <p>by <span>RSGiTECH</span> on <span>October 22, 2018</span></p>
-                    <p>Discription- </p>
-                    <a href="detail.html" class="btn btn-danger">Read more...</a>
-                </div>
-
-            </div>
             
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="/upload/image_1652099173011.jpeg" alt="blog1" />
-                     
-                    <h3> sss</h3>
-                    <p>by <span>RSGiTECH</span> on <span>October 22, 2018</span></p>
-                    <p>Discription </p>
-                    <a href="detail.html" class="btn btn-danger">Read more...</a>
-                </div>
-
-            </div>
-            
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="/upload/image_1652099186927.jpg" alt="blog1" />
-                     
-                    <h3> aaa</h3>
-                    <p>by <span>RSGiTECH</span> on <span>October 22, 2018</span></p>
-                    <p>Discription </p>
-                    <a href="detail.html" class="btn btn-danger">Read more...</a>
-                </div>
-
-            </div>
-            
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="/upload/image_1652700834608.jpeg" alt="blog1" />
-                     
-                    <h3> sss</h3>
-                    <p>by <span>RSGiTECH</span> on <span>October 22, 2018</span></p>
-                    <p>Discription </p>
-                    <a href="detail.html" class="btn btn-danger">Read more...</a>
-                </div>
-
-            </div>
             
             
             

@@ -1,11 +1,15 @@
-
+const BlogModel = require('../models/Blog')
 
 class FrontController{
 
 
-    static home=(req,res)=>{
+    static home= async(req,res)=>{
+        const data = await BlogModel.find()
+        console.log(data)
        // res.send('homepage')
-       res.render('home')
+       res.render('home',{d:data})
+
+       
 
     }
 
@@ -27,6 +31,17 @@ class FrontController{
     static login=(req,res)=>{
 
         res.render('login')
+    }
+
+    static blogdetail = async(req ,res) =>{
+        try{
+            const result = await BlogModel.findById(req.params.id);
+            console.log(result)
+            res.render("blogdetail",{r: result});
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
 
