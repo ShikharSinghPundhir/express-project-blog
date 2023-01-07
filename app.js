@@ -13,6 +13,7 @@ const CategoryModel = require('./models/category')
 // file uploader
 const fileUpload = require("express-fileupload");
 const ContactController = require('./controllers/admin/ContactController')
+const AboutController = require('./controllers/admin/AboutController')
 app.use(fileUpload({useTempFiles: true}));
 
 // mongo db connection
@@ -49,6 +50,8 @@ app.get('/admin/blogview/:id',BlogController.blogview)
 app.get('/admin/blogedit/:id',BlogController.blogedit)
 app.post('/blogupdate/:id',BlogController.blogupdate)
 app.get('/admin/blogdelete/:id',BlogController.blogdelete)
+//admin about page 
+app.get('/admin/aboutus',AboutController.aboutdisplay)
 
 //admin category controller
 app.get('/admin/categorydisplay',CategoryController.categorydisplay)

@@ -2,7 +2,7 @@ const mongoose =require('mongoose')
 
 // define schema 
 const AboutSchema=new mongoose.Schema({
-    aboutus:{
+    description:{
         type:String,
         required:true
     }
@@ -11,8 +11,8 @@ const AboutSchema=new mongoose.Schema({
 
 
 // create collection             
-const AboutModel= mongoose.model('about',AboutSchema)
-//                                     ^ collection name  
+const AboutModel= mongoose.model('aboutus',AboutSchema)
+//                                   ^ collection name  
 
 
 module.exports=AboutModel
