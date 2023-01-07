@@ -12,6 +12,7 @@ const CategoryModel = require('./models/category')
 
 // file uploader
 const fileUpload = require("express-fileupload");
+const ContactController = require('./controllers/admin/ContactController')
 app.use(fileUpload({useTempFiles: true}));
 
 // mongo db connection
@@ -56,6 +57,12 @@ app.get('/admin/categoryview/:id',CategoryController.categoryview)
 app.get('/admin/categoryedit/:id',CategoryController.categoryedit)
 app.post('/categoryupdate/:id',CategoryController.categoryupdate)
 app.get('/admin/categorydelete/:id',CategoryController.categorydelete)
+
+//admin contact controller
+app.get('/admin/contactdisplay',ContactController.contactview)
+
+//contact page 
+app.post('/contactinsert',ContactController.contactadd)
 
 // server create
 app.listen(port, () => {
