@@ -1,0 +1,44 @@
+<%- include ('../../header.ejs') %>
+
+    <section class="dashboard-wrap mtb-40">
+        <div class="container">
+            <div class="body-content">
+                <div class="row">
+                    <div class="col-md-3"><%- include ('../links.ejs') %></div>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                                <div class="dash-title">
+                                    <h1>Contact</h1>
+                                </div>
+
+                            </div>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+
+                                    <th>About us content</th>
+
+                                </tr>
+
+                                <% ac.forEach((auc)=>{ %>
+                                    <tr>
+
+                                        <td>
+                                            <%= auc.aboutus %>
+                                        </td>
+
+                                    </tr>
+                                    <% }) %>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <%- include ('../../footer.ejs') %>

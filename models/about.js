@@ -2,7 +2,7 @@ const mongoose =require('mongoose')
 
 // define schema 
 const AboutSchema=new mongoose.Schema({
-    description:{
+    aboutus:{
         type:String,
         required:true
     }
