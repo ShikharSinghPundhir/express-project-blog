@@ -10,9 +10,20 @@
                             <div class="dash-header">
                                 <div class="dash-title">
                                     <h1>About</h1>
+                                    <% ac.forEach((a)=>{ %>
+                                </div>
+                                 <div class="dash-nav">
+                                    <a href="/admin/aboutedit/<%= a._id %>"><i
+                                        class="fa-solid fa-pen-to-square fa-2x"
+                                        style="color: green; "></i>
+                                    </a>
+                                
+
+
                                 </div>
 
                             </div>
+
                             <table class="table table-bordered table-striped">
                                 <tr>
 
@@ -21,7 +32,7 @@
                                 </tr>
 
 
-                                <% ac.forEach((a)=>{ %>
+                                
                                     <tr>
                                         
 

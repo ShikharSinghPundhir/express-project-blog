@@ -1,19 +1,17 @@
 const express = require('express')
-const AdminController = require('./controllers/admin/AdminController')
-const BlogController = require('./controllers/admin/BlogController')
-const { blogdisplay } = require('./controllers/admin/BlogController')
-const CategoryController = require('./controllers/admin/CategoryController')
-const FrontController = require('./controllers/FrontController')
+
 const connectDB = require('./db/connect_db')
 const app = express()
 const port = 2147
 const bodyParser=require('body-parser')    
-const CategoryModel = require('./models/category')
+
+var session = require('express-session')
+var flash = require('connect-flash');
+const router = require('./routes/web')
 
 // file uploader
 const fileUpload = require("express-fileupload");
-const ContactController = require('./controllers/admin/ContactController')
-const AboutController = require('./controllers/admin/AboutController')
+
 app.use(fileUpload({useTempFiles: true}));
 
 // mongo db connection
@@ -30,42 +28,29 @@ app.use(express.static('public'))
 // app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.urlencoded({extended:false}))
 
-// route
-//front controller
-app.get('/',FrontController.home)
-app.get('/about',FrontController.about)
-app.get('/contact',FrontController.contact)
-app.get('/blog',FrontController.blog)
-app.get('/login',FrontController.login)
-app.get('/blogdetail/:id',FrontController.blogdetail)
 
 
-// admin controller 
-app.get('/admin/dashboard',AdminController.Dashboard)
+// messages
+app.use(session({
+  secret: 'secret',
+  cookie: { maxAge: 60000 },
+  resave: false,
+  saveUninitialized: false,
+  
+}));
 
-//admin blog controller
-app.get('/admin/blogdisplay',BlogController.blogdisplay)
-app.post('/bloginsert',BlogController.bloginsert)
-app.get('/admin/blogview/:id',BlogController.blogview)
-app.get('/admin/blogedit/:id',BlogController.blogedit)
-app.post('/blogupdate/:id',BlogController.blogupdate)
-app.get('/admin/blogdelete/:id',BlogController.blogdelete)
-//admin about page 
-app.get('/admin/aboutus',AboutController.aboutdisplay)
+app.use(flash());
 
-//admin category controller
-app.get('/admin/categorydisplay',CategoryController.categorydisplay)
-app.post('/categoryinsert',CategoryController.categoryinsert)
-app.get('/admin/categoryview/:id',CategoryController.categoryview)
-app.get('/admin/categoryedit/:id',CategoryController.categoryedit)
-app.post('/categoryupdate/:id',CategoryController.categoryupdate)
-app.get('/admin/categorydelete/:id',CategoryController.categorydelete)
+// router linking
+app.use('/',router)
 
-//admin contact controller
-app.get('/admin/contactdisplay',ContactController.contactview)
 
-//contact page 
-app.post('/contactinsert',ContactController.contactadd)
+
+
+
+
+
+
 
 // server create
 app.listen(port, () => {
