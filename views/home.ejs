@@ -44,9 +44,20 @@
 <section class="featured-blog mtb-40">
     <div class="container">
         <div class="row">
-
-            <% d.forEach((item)=>{ %>
-            <div class="col-md-4" >
+          <% d.forEach((item)=>{ %>
+          <div class="col-md-4 mb-5" >
+            <div class="card" style="width: 20rem;">
+              <img class="card-img-top" src="<%= item.image.url %> " width="300" height="150" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= item.title %></h5>
+                <p class="card-text"><%= item.createdAt.toLocaleDateString() %></p>
+                <p class="card-text"><%= item.description.slice(0,150) %></p>
+                <a href="/blogdetail/<%= item._id %>" class="btn btn-primary">Read more...</a>
+              </div>
+            </div>
+          </div>
+            
+            <!-- <div class="col-md-4" >
                 <div class="blog-box">
                     <img src="<%= item.image.url %> " width="300" height="300" alt="blog1" />
                      
@@ -56,7 +67,7 @@
                     <a href="/blogdetail/<%= item._id %>" class="btn btn-danger">Read more...</a>
                 </div>
 
-            </div>
+            </div> -->
             <% }) %>
             
             
