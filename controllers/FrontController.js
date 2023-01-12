@@ -8,7 +8,7 @@ class FrontController{
 
     static home= async(req,res)=>{
         const data = await BlogModel.find()
-        console.log(data)
+        //console.log(data)
        // res.send('homepage')
        res.render('home',{d:data})
 
