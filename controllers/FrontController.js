@@ -1,93 +1,97 @@
-const AboutModel = require('../models/about')
-const BlogModel = require('../models/Blog')
-const categorymodel = require('../models/category')
-const AdminModel = require('../models/admin')
+const AboutModel = require("../models/about");
+const BlogModel = require("../models/Blog");
+const categorymodel = require("../models/category");
+const AdminModel = require("../models/admin");
 
-class FrontController{
+class FrontController {
+  static home = async (req, res) => {
+    const data = await BlogModel.find().sort({ _id: -1 }).limit(6);
+    //console.log(data)
+    // res.send('homepage')
+    res.render("home", { d: data });
+  };
 
+  static about = async (req, res) => {
+    const aboutdata = await AboutModel.find();
+    //console.log(aboutdata)
+    res.render("about", { ab: aboutdata });
+  };
 
-    static home= async(req,res)=>{
-        const data = await BlogModel.find()
-        //console.log(data)
-       // res.send('homepage')
-       res.render('home',{d:data})
+  static contact = (req, res) => {
+    res.render("contact");
+  };
 
-       
+  static blog = async (req, res) => {
+    const bloglist = await BlogModel.find();
 
+    res.render("blog", { bb: bloglist });
+  };
+
+  static blogdetail = async (req, res) => {
+    try {
+      const category = await categorymodel.find().sort({ _id: -1 }).limit(6);
+      const recentblog = await BlogModel.find().sort({ _id: -1 }).limit(6);
+      const result = await BlogModel.findById(req.params.id);
+      //console.log(result)
+      res.render("blogdetail", {
+        r: result,
+        recentblog: recentblog,
+        cat: category,
+      });
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    static about=async(req,res)=>{
-        const aboutdata = await AboutModel.find()
-        //console.log(aboutdata)
-        res.render('about',{ab: aboutdata})
-        
-        
-    }
+  // admin login
 
-    static  contact=(req,res)=>{
-        
-        res.render('contact')
-    }
+  static login = (req, res) => {
 
-    static blog= async(req,res)=>{
-        const bloglist = await BlogModel.find()
+    res.render("login",{message:req.flash("success")});
 
-        res.render('blog',{bb:bloglist})
-    }
+  };
+  static adminregister = async (req, res) => {
+    res.render("register", { message: req.flash("error") });
+  };
 
-    
-
-    
-    
-    static blogdetail = async(req ,res) =>{
-        try{
-            const category =await categorymodel.find()
-            const recentblog = await BlogModel.find()
-            const result = await BlogModel.findById(req.params.id);
-            //console.log(result)
-            res.render("blogdetail",{r: result,recentblog:recentblog,cat:category});
-
-        }
-        catch(err){
-            console.log(err)
-        }
-    }
-
-// admin login  
-
-    static login=(req,res)=>{
-
-        res.render('login')
-    }
-    static adminregister=async(req,res)=>{
-
-        res.render('register')
-    }
-
-    static admininsert=async(req,res)=>{
-        try{
-            //console.log(req.body)
-            const{name,email,password,cpassword}=req.body
-
-            const result= new AdminModel({
+  static admininsert = async (req, res) => {
+    try {
+      //console.log(req.body)
+      const { name, email, password, cpassword } = req.body;
+      const admin = await AdminModel.findOne({ email: email });
+      //console.log(admin)
+      if (admin) {
+        req.flash("error", "email already exists");
+        res.redirect("/register");
+      } else {
+        if (name && email && password && cpassword) {
+          if (password == cpassword) {
+            try {
+              const result = new AdminModel({
                 name: name,
                 email: email,
-                password:password
-
-            })
-            await result.save();
-            res.redirect("/login")
-
+                password: password,
+              });
+              await result.save();
+              req.flash("success", "registration sucessuful  Please login ");
+              res.redirect("/login");
+            } catch (err) {
+              console.log(err);
+            }
+          } else {
+            req.flash("error", "Password and confirm password doesnot match");
+            res.redirect("/register");
+          }
+        } else {
+          req.flash("error", "All Field are required");
+          res.redirect("/register");
         }
-        catch(err){
-            console.log(err)
-        }
-        
+      }
+
+      //
+    } catch (err) {
+      console.log(err);
     }
-
-
-
-
-    
+  };
 }
-module.exports=FrontController
+module.exports = FrontController;
