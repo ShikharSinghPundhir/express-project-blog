@@ -3,6 +3,7 @@ const BlogModel = require("../models/Blog");
 const categorymodel = require("../models/category");
 const AdminModel = require("../models/admin");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 class FrontController {
   static home = async (req, res) => {
@@ -44,7 +45,7 @@ class FrontController {
     }
   };
 
-  // admin loginf
+  // admin login
 
   static login = (req, res) => {
 
@@ -124,6 +125,18 @@ class FrontController {
         req.flash("error", "All Field are required");
         res.redirect("/login");
       }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+
+
+  static logout = async(req,res) =>{
+    try{
+      res.redirect('/login')
+
     }
     catch(err){
       console.log(err)

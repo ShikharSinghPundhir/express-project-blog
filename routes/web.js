@@ -22,6 +22,7 @@ router.get('/blogdetail/:id',FrontController.blogdetail)
 router.get('/register',FrontController.adminregister)
 router.post('/adminregister',FrontController.admininsert)
 router.post('/verify_login',FrontController.verifylogin)
+router.get('/logout',FrontController.logout)
 
 
 // admin controller 
