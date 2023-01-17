@@ -2,6 +2,7 @@ const AboutModel = require("../models/about");
 const BlogModel = require("../models/Blog");
 const categorymodel = require("../models/category");
 const AdminModel = require("../models/admin");
+const bcrypt = require('bcrypt');
 
 class FrontController {
   static home = async (req, res) => {
@@ -47,7 +48,7 @@ class FrontController {
 
   static login = (req, res) => {
 
-    res.render("login",{message:req.flash("success")});
+    res.render("login",{message:req.flash("success"),message1:req.flash("error")});
 
   };
   static adminregister = async (req, res) => {
@@ -67,10 +68,11 @@ class FrontController {
         if (name && email && password && cpassword) {
           if (password == cpassword) {
             try {
+              const hashpassword = await bcrypt.hash(password,10)
               const result = new AdminModel({
                 name: name,
                 email: email,
-                password: password,
+                password: hashpassword,
               });
               await result.save();
               req.flash("success", "registration sucessuful  Please login ");
@@ -93,5 +95,46 @@ class FrontController {
       console.log(err);
     }
   };
+
+  static verifylogin =async(req,res)=>{
+
+    try{
+      //console.log(req.body)
+      const {email,password} =req.body
+      if(email && password){
+        const admin = await AdminModel.findOne({email:email})
+        if(admin != null){
+          const ismatched = await bcrypt.compare(password,admin.password)
+          if(ismatched ){
+            res.redirect("/admin/dashboard")
+
+          }
+          else{
+            req.flash("error", " email or password not matched");
+            res.redirect("/login");
+          }
+        } 
+        else{
+          req.flash("error", "  You are not registered");
+          res.redirect("/login");
+        }
+
+      }
+      else{
+        req.flash("error", "All Field are required");
+        res.redirect("/login");
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+
+
 }
 module.exports = FrontController;
+
+
+
+//  $2b$10$X1srN2t.2BAXniV1qYNcmeJDiJDFMCkXesTC3CsZg5xVEDxmUIQWy
