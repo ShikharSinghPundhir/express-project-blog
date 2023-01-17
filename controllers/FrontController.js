@@ -44,7 +44,7 @@ class FrontController {
     }
   };
 
-  // admin login
+  // admin loginf
 
   static login = (req, res) => {
 
