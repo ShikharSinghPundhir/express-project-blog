@@ -10,6 +10,7 @@ const CategoryModel = require('../models/category')
 const ContactController = require('../controllers/admin/ContactController')
 const AboutController = require('../controllers/admin/AboutController')
 const { about } = require('../controllers/FrontController')
+const admin_auth = require ('../middleware/auth')
 
 // route
 //front controller
@@ -25,8 +26,10 @@ router.post('/verify_login',FrontController.verifylogin)
 router.get('/logout',FrontController.logout)
 
 
+
 // admin controller 
-router.get('/admin/dashboard',AdminController.Dashboard)
+router.get('/admin/dashboard',admin_auth,AdminController.Dashboard)
+
 
 //admin blog controller
 router.get('/admin/blogdisplay',BlogController.blogdisplay)
