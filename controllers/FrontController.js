@@ -107,6 +107,10 @@ class FrontController {
         if(admin != null){
           const ismatched = await bcrypt.compare(password,admin.password)
           if(ismatched ){
+            //token generate
+            const token = jwt.sign({ id: admin._id }, 'shikhartcsdigitalcandidate700');
+            //console.log(token)
+            res.cookie('token',token)
             res.redirect("/admin/dashboard")
 
           }
@@ -151,3 +155,7 @@ module.exports = FrontController;
 
 
 //  $2b$10$X1srN2t.2BAXniV1qYNcmeJDiJDFMCkXesTC3CsZg5xVEDxmUIQWy
+
+
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzJkMDc0YjBiZmU5Zjg5OTUxMDBkZSIsImlhdCI6MTY3Mzk3MTU2MX0.9BI3Ls3OPk3Nm0eLxCGPaWFnF7d2j6i2UJ9yMrh0XuY
