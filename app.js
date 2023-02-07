@@ -3,7 +3,9 @@ const express = require('express')
 const connectDB = require('./db/connect_db')
 const app = express()
 const port = 2147
-const bodyParser=require('body-parser')    
+const bodyParser=require('body-parser')
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())    
 
 var session = require('express-session')
 var flash = require('connect-flash');

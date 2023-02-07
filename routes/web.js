@@ -32,30 +32,30 @@ router.get('/admin/dashboard',admin_auth,AdminController.Dashboard)
 
 
 //admin blog controller
-router.get('/admin/blogdisplay',BlogController.blogdisplay)
-router.post('/bloginsert',BlogController.bloginsert)
-router.get('/admin/blogview/:id',BlogController.blogview)
-router.get('/admin/blogedit/:id',BlogController.blogedit)
-router.post('/blogupdate/:id',BlogController.blogupdate)
-router.get('/admin/blogdelete/:id',BlogController.blogdelete)
+router.get('/admin/blogdisplay',admin_auth,BlogController.blogdisplay)
+router.post('/bloginsert',admin_auth,BlogController.bloginsert)
+router.get('/admin/blogview/:id',admin_auth,BlogController.blogview)
+router.get('/admin/blogedit/:id',admin_auth,BlogController.blogedit)
+router.post('/blogupdate/:id',admin_auth,BlogController.blogupdate)
+router.get('/admin/blogdelete/:id',admin_auth,BlogController.blogdelete)
 //admin about page 
-router.get('/admin/aboutus',AboutController.aboutdisplay)
-router.get('/admin/aboutedit/:id',AboutController.aboutedit)
-router.post('/aboutupdate/:id',AboutController.aboutupdate)
+router.get('/admin/aboutus',admin_auth,AboutController.aboutdisplay)
+router.get('/admin/aboutedit/:id',admin_auth,AboutController.aboutedit)
+router.post('/aboutupdate/:id',admin_auth,AboutController.aboutupdate)
 
 //admin category controller
-router.get('/admin/categorydisplay',CategoryController.categorydisplay)
-router.post('/categoryinsert',CategoryController.categoryinsert)
-router.get('/admin/categoryview/:id',CategoryController.categoryview)
-router.get('/admin/categoryedit/:id',CategoryController.categoryedit)
-router.post('/categoryupdate/:id',CategoryController.categoryupdate)
-router.get('/admin/categorydelete/:id',CategoryController.categorydelete)
+router.get('/admin/categorydisplay',admin_auth,CategoryController.categorydisplay)
+router.post('/categoryinsert',admin_auth,CategoryController.categoryinsert)
+router.get('/admin/categoryview/:id',admin_auth,CategoryController.categoryview)
+router.get('/admin/categoryedit/:id',admin_auth,CategoryController.categoryedit)
+router.post('/categoryupdate/:id',admin_auth,CategoryController.categoryupdate)
+router.get('/admin/categorydelete/:id',admin_auth,CategoryController.categorydelete)
 
 //admin contact controller
-router.get('/admin/contactdisplay',ContactController.contactview)
+router.get('/admin/contactdisplay',admin_auth,ContactController.contactview)
 
 //contact page 
-router.post('/contactinsert',ContactController.contactadd)
+router.post('/contactinsert',admin_auth,ContactController.contactadd)
 
 
 

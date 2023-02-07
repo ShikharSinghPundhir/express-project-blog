@@ -139,7 +139,9 @@ class FrontController {
 
   static logout = async(req,res) =>{
     try{
+      res.clearCookie('token')
       res.redirect('/login')
+      
 
     }
     catch(err){
